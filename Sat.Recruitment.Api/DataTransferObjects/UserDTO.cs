@@ -26,7 +26,7 @@ namespace Sat.Recruitment.Api.DataTransferObjects
         [Required(ErrorMessage = "UserType is required.")]
         public string UserType { get; set; }
 
-        [DataType(DataType.Currency)]
+        [OnlyDecimalValidValues(ErrorMessage = "Decimal value not Allowed")]
         [Required(ErrorMessage = "Money is required.")]
         public decimal Money { get; set; }
     }
