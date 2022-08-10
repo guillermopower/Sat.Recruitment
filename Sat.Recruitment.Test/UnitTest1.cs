@@ -13,9 +13,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_UserCreated_OK()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var usr = new User() { Name = "Mike", Email = "mike@gmail.com", Address = "Av. Juan G", Phone = "+349 1122354215", UserType = "Normal", Money = 124 };
             var result = await userManager.CreateUser(usr);
 
@@ -26,9 +24,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_UserCreated_NO_OK()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var usr = new User()
             {
                 Name = "Agustina",
@@ -47,9 +43,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_1000_UserTyepe_Normal()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var usr = new User()
             {
                 Name = "Agustina",
@@ -67,9 +61,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_20_UserType_Normal()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var result = await userManager.CalculateGif(20, User.UserTypeEnum.Normal.ToString());
             Assert.Equal((decimal)36, result);
         }
@@ -77,9 +69,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_1_UserType_Normal()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var result = await userManager.CalculateGif(1, User.UserTypeEnum.Normal.ToString());
 
             Assert.Equal((decimal)1, result);
@@ -88,9 +78,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_0_UserType_Normal()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var result = await userManager.CalculateGif(0, User.UserTypeEnum.Normal.ToString());
 
             Assert.Equal((decimal)0, result);
@@ -99,9 +87,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_NegativeAmounts_UserType_Normal()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var result = await userManager.CalculateGif(-1, User.UserTypeEnum.Normal.ToString());
 
             Assert.Equal((decimal)-1, result);
@@ -110,9 +96,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_1000_UserType_SuperUser()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var result = await userManager.CalculateGif(1000, User.UserTypeEnum.SuperUser.ToString());
 
             Assert.Equal((decimal)1200, result);
@@ -121,9 +105,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public async Task Test_Business_CalculateGif_1000_UserType_Premium()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var result = await userManager.CalculateGif(1000, User.UserTypeEnum.Premium.ToString());
 
             Assert.Equal((decimal)3000, result);
@@ -132,9 +114,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public void Test_Business_IsDuplicated_True()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var Agustina = new User()
             {
                 Name = "Agustina",
@@ -152,9 +132,7 @@ namespace Sat.Recruitment.Test
         [Fact]
         public void Test_Business_IsDuplicated_False()
         {
-            var userData = new UserData();
-            var ruleData = new RuleData();
-            var userManager = new UserManager(userData, ruleData);
+            var userManager = new UserManager(new UserData(), new RuleData());
             var Agustina = new User()
             {
                 Name = "Agustina",
