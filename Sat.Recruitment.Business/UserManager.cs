@@ -24,7 +24,7 @@ namespace Sat.Recruitment.Business
             var newUser = new User
             {
                 Name = user.Name,
-                Email = user.Email,
+                Email = Utils.NormalizeEmail(user.Email),
                 Address = user.Address,
                 Phone = user.Phone,
                 UserType = user.UserType,

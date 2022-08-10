@@ -4,7 +4,7 @@ namespace Sat.Recruitment.Models
 {
     public class Utils
     {
-        public string NormalizeEmail(string value)
+        public static string NormalizeEmail(string value)
         {
             var aux = value.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
 
