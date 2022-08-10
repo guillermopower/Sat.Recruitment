@@ -12,7 +12,6 @@ namespace Sat.Recruitment.Data
         {
             var _users = new List<User>();
             var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            //Directory.GetCurrentDirectory()
             var completePath = path + filename;
 
             FileStream fileStream = new FileStream(completePath, FileMode.Open);
