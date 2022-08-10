@@ -25,15 +25,7 @@ namespace Sat.Recruitment.Test
         public async Task Test_Business_UserCreated_NO_OK()
         {
             var userManager = new UserManager(new UserData(), new RuleData());
-            var usr = new User()
-            {
-                Name = "Agustina",
-                Email = "Agustina@gmail.com",
-                Address = "Av. Juan G",
-                Phone = "+349 1122354215",
-                UserType = "Normal",
-                Money = 124
-            };
+            var usr = GetUser();
             var result = await userManager.CreateUser(usr);
 
             Assert.False(result.IsSuccess);
@@ -41,18 +33,9 @@ namespace Sat.Recruitment.Test
         }
 
         [Fact]
-        public async Task Test_Business_CalculateGif_1000_UserTyepe_Normal()
+        public async Task Test_Business_CalculateGif_1000_UserType_Normal()
         {
             var userManager = new UserManager(new UserData(), new RuleData());
-            var usr = new User()
-            {
-                Name = "Agustina",
-                Email = "Agustina@gmail.com",
-                Address = "Av. Juan G",
-                Phone = "+349 1122354215",
-                UserType = "Normal",
-                Money = 124
-            };
             var result = await userManager.CalculateGif(1000, User.UserTypeEnum.Normal.ToString());
 
             Assert.Equal(1120, result);
@@ -115,15 +98,7 @@ namespace Sat.Recruitment.Test
         public void Test_Business_IsDuplicated_True()
         {
             var userManager = new UserManager(new UserData(), new RuleData());
-            var Agustina = new User()
-            {
-                Name = "Agustina",
-                Email = "Agustina@gmail.com",
-                Address = "Av. Juan G",
-                Phone = "+349 1122354215",
-                UserType = "Normal",
-                Money = 124
-            };
+            var Agustina = GetUser();
             List<User> list = new List<User>() { Agustina };
 
             Assert.True(userManager.IsDuplicated(Agustina, list));
@@ -133,15 +108,7 @@ namespace Sat.Recruitment.Test
         public void Test_Business_IsDuplicated_False()
         {
             var userManager = new UserManager(new UserData(), new RuleData());
-            var Agustina = new User()
-            {
-                Name = "Agustina",
-                Email = "Agustina@gmail.com",
-                Address = "Av. Juan G",
-                Phone = "+349 1122354215",
-                UserType = "Normal",
-                Money = 124
-            };
+            var Agustina = GetUser();
 
             List<User> list = new List<User>() {
             new User()
@@ -165,6 +132,11 @@ namespace Sat.Recruitment.Test
             };
 
             Assert.False(userManager.IsDuplicated(Agustina, list));
+        }
+
+        private User GetUser()
+        {
+            return new User() {Name = "Agustina",Email = "Agustina@gmail.com",Address = "Av. Juan G",Phone = "+349 1122354215",UserType = "Normal",Money = 124};
         }
     }
 }
